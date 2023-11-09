@@ -12,12 +12,12 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var right: UILabel!
     @IBOutlet weak var left: UILabel!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        right.text = "4"
-        left.text = "1"
+        right.text = "0"
+        left.text = "0"
     }
     
     @IBAction func roll(_ sender: Any) {
@@ -28,11 +28,24 @@ class ViewController: UIViewController {
         
         let total = leftInt + rightInt
         
+        var resultString = ""
+        
         if(total >= 6){
-            print("You win")
+            resultString = "You win"
         }else{
-            print("You loose")
+            resultString = "You loose"
         }
+        
+        // Initialisation
+        
+        let result = UILabel(frame: CGRect(x: 0, y: self.view.bounds.height - 200, width: self.view.bounds.width, height: 200))
+        // Paramétrage
+        result.backgroundColor = .white
+        result.text = resultString
+        result.textAlignment = .center
+        
+        // Ajout à la vue
+        self.view.addSubview(result)
     }
     
     func newPairDices() {
